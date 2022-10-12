@@ -7,6 +7,7 @@ const User = {
     email: {
       type: Text,
       isUnique: true,
+      isIndexed: true
     },
     isAdmin: {
       type: Checkbox,

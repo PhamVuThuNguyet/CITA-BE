@@ -1,17 +1,17 @@
-const { Keystone } = require('@keystonejs/keystone')
-const { PasswordAuthStrategy } = require('@keystonejs/auth-password')
-const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose')
-const { GraphQLApp } = require('@keystonejs/app-graphql')
-const { AdminUIApp } = require('@keystonejs/app-admin-ui')
-const { DB_CONNECTION_ON_CLOUD } = require('./config')
-const listSchema = require('./schemas')
-const initialiseData = require('./initial-data')
+const { Keystone } = require('@keystonejs/keystone');
+const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
+const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
+const { GraphQLApp } = require('@keystonejs/app-graphql');
+const { AdminUIApp } = require('@keystonejs/app-admin-ui');
+const { DB_CONNECTION_ON_CLOUD, ENVIROMENT } = require('./config');
+const listSchema = require('./schemas');
+const initialiseData = require('./initial-data');
 
-const PROJECT_NAME = 'VKU CMS'
+const PROJECT_NAME = 'CMS';
 
 const adapterConfig = {
   mongoUri: DB_CONNECTION_ON_CLOUD,
-}
+};
 
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
@@ -22,14 +22,14 @@ const keystone = new Keystone({
     maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
     sameSite: false,
   },
-})
+});
 
-listSchema.map(({ name, schema }) => keystone.createList(name, schema))
+listSchema.map(({ name, schema }) => keystone.createList(name, schema));
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
   list: 'User',
-})
+});
 
 module.exports = {
   keystone,
@@ -41,4 +41,4 @@ module.exports = {
       authStrategy,
     }),
   ],
-}
+};

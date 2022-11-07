@@ -1,5 +1,6 @@
 const { Text, CalendarDay, File, Integer, Relationship } = require('@keystonejs/fields');
 const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
+const { CloudinaryImage } = require('@keystonejs/fields-cloudinary-image');
 const fileAdapter = require('./FileAdapter');
 const access = require('../access.control');
 
@@ -13,24 +14,10 @@ const Element = {
     from: { type: CalendarDay },
     to: { type: CalendarDay },
     image: {
-      type: File,
+      type: CloudinaryImage,
       adapter: fileAdapter,
-      hooks: {
-        beforeChange: async ({ existingItem }) => {
-          if (existingItem && existingItem.file) {
-            await fileAdapter.delete(existingItem.file);
-          }
-        },
-      },
     },
     order: { type: Integer }
-  },
-  hooks: {
-    afterDelete: async ({ existingItem }) => {
-      if (existingItem.file) {
-        await fileAdapter.delete(existingItem.file);
-      }
-    },
   },
   access: {
     read: true,

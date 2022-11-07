@@ -4,7 +4,8 @@ const access = require('../access.control');
 const Layout = {
   fields: {
     name: { type: Text, isRequired: true, isUnique: true },
-    elements: { type: Relationship, ref: 'Element', many: true }
+    elements: { type: Relationship, ref: 'Element', many: true },
+    order: { type: Integer }
   },
   access: {
     read: true,

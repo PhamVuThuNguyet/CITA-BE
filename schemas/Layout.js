@@ -1,4 +1,4 @@
-const { Text, Relationship } = require('@keystonejs/fields');
+const { Text, Relationship, Integer } = require('@keystonejs/fields');
 const access = require('../access.control');
 
 const Layout = {

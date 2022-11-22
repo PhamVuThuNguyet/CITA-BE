@@ -18,9 +18,9 @@ const keystone = new Keystone({
   onConnect: process.env.CREATE_TABLES !== 'true' && initialiseData,
   cookieSecret: process.env.COOKIE_SECRET,
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // Default to true in production
+    secure: false,
     maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
-    sameSite: false,
+    sameSite: 'strict',
   },
 });
 

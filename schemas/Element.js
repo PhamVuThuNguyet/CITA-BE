@@ -17,6 +17,10 @@ const Element = {
       type: CloudinaryImage,
       adapter: fileAdapter,
     },
+    file: {
+      type: File,
+      adapter: fileAdapter
+    },
     order: { type: Integer }
   },
   access: {

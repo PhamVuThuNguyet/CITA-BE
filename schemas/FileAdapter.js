@@ -1,5 +1,10 @@
-require('dotenv').config()
+require('dotenv').config();
 const { CloudinaryAdapter } = require('@keystonejs/file-adapters');
+const { LocalFileAdapter } = require('@keystonejs/file-adapters');
+
+const localFileAdapter = new LocalFileAdapter({
+  /*...config */
+});
 
 const fileAdapter = new CloudinaryAdapter({
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
@@ -8,5 +13,4 @@ const fileAdapter = new CloudinaryAdapter({
   folder: 'cita',
 });
 
-
-module.exports = fileAdapter;
+module.exports = { fileAdapter, localFileAdapter };

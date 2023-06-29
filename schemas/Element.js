@@ -1,7 +1,7 @@
 const { Text, CalendarDay, File, Integer, Relationship } = require('@keystonejs/fields');
 const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
 const { CloudinaryImage } = require('@keystonejs/fields-cloudinary-image');
-const { fileAdapter, localFileAdapter } = require('./FileAdapter');
+const { fileAdapter } = require('./FileAdapter');
 const access = require('../access.control');
 
 const Element = {
@@ -19,7 +19,7 @@ const Element = {
     },
     file: {
       type: File,
-      adapter: localFileAdapter
+      adapter: fileAdapter
     },
     order: { type: Integer }
   },

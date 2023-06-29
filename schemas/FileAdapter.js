@@ -3,7 +3,8 @@ const { CloudinaryAdapter } = require('@keystonejs/file-adapters');
 const { LocalFileAdapter } = require('@keystonejs/file-adapters');
 
 const localFileAdapter = new LocalFileAdapter({
-  /*...config */
+  src: 'public/files',
+  path: '/public/files'
 });
 
 const fileAdapter = new CloudinaryAdapter({
